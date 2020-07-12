@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import inn.mroyek.movieappcleanarchitecture.BuildConfig
 import inn.mroyek.movieappcleanarchitecture.data.network.NetworkInterceptor
+import inn.mroyek.movieappcleanarchitecture.data.service.MovieService
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -35,7 +36,7 @@ open class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor, cache: Cache, interceptor: HttpLoggingInterceptor) : OkHttpClient {
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor, cache: Cache, interceptor: NetworkInterceptor) : OkHttpClient {
         val client = OkHttpClient.Builder()
         client.cache(cache)
         client.addInterceptor(interceptor)
@@ -54,4 +55,9 @@ open class NetworkModule {
             .build()
     }
 
+    @Provides
+    @Singleton
+    fun provideMovieService(retrofit: Retrofit) : MovieService {
+        return retrofit.create(MovieService::class.java)
+    }
 }

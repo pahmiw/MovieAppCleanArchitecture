@@ -5,6 +5,7 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import inn.mroyek.movieappcleanarchitecture.di.component.AppComponent
+import inn.mroyek.movieappcleanarchitecture.di.component.DaggerAppComponent
 import inn.mroyek.movieappcleanarchitecture.di.modules.ContextModule
 import inn.mroyek.movieappcleanarchitecture.di.modules.NetworkModule
 import timber.log.Timber
@@ -42,5 +43,9 @@ open class MyMovieApp : Application(), HasAndroidInjector {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+    }
+
+    open fun getComponent() : AppComponent {
+        return appComponent
     }
 }
