@@ -8,7 +8,7 @@
 
         <variable
             name="movie"
-            type="inn.mroyek.movieappcleanarchitecture.domain.entity.Movie" />
+            type="inn.mroyek.movieappcleanarchitecture.domain.entity.movielist.Movie" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

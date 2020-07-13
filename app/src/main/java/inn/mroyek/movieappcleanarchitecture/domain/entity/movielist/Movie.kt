@@ -1,10 +1,9 @@
-package inn.mroyek.movieappcleanarchitecture.domain.entity
+package inn.mroyek.movieappcleanarchitecture.domain.entity.movielist
 
-data class MovieDetailUiModel(
+data class Movie(
     val id: Int,
     val title: String,
     val originalTitle: String,
-    val originalLanguage : String,
     val overview: String,
     val posterPath : String,
     val backdropPath : String,
@@ -12,9 +11,5 @@ data class MovieDetailUiModel(
     val voteAverage: Float,
     val popularity: Float,
     val releaseDate: String,
-    val adult: Boolean,
-    val runtime : String,
-    val tagline : String,
-    val status : String,
-    val genres : String
+    val adult: Boolean
 )

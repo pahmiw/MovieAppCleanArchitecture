@@ -16,4 +16,5 @@
     <color name="bottomNavigationColor">#212121</color>
     <color name="black">#DE000000</color>
     <color name="red">#EA2036</color>
+    <color name="grey_700">#616161</color>
 </resources>

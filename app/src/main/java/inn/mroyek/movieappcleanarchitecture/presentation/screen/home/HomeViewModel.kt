@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import inn.mroyek.movieappcleanarchitecture.data.vo.Result
-import inn.mroyek.movieappcleanarchitecture.domain.entity.Movie
+import inn.mroyek.movieappcleanarchitecture.domain.entity.movielist.Movie
 import inn.mroyek.movieappcleanarchitecture.domain.usecase.GetNowPlayingUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject

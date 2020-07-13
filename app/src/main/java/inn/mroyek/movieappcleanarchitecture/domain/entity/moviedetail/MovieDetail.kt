@@ -1,4 +1,7 @@
-package inn.mroyek.movieappcleanarchitecture.domain.entity
+package inn.mroyek.movieappcleanarchitecture.domain.entity.moviedetail
+
+import inn.mroyek.movieappcleanarchitecture.abstraction.BaseItemModel
+import inn.mroyek.movieappcleanarchitecture.domain.factory.ItemTypeFactory
 
 data class MovieDetail(
     val id: Int,
@@ -21,5 +24,10 @@ data class MovieDetail(
     data class Genre(
         val id : Int,
         val name : String
-    )
+    ) : BaseItemModel() {
+        override fun type(itemTypeFactory: ItemTypeFactory): Int {
+            return itemTypeFactory.type(this)
+        }
+
+    }
 }

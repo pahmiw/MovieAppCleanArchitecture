@@ -2,7 +2,7 @@ package inn.mroyek.movieappcleanarchitecture.data.mapper
 
 import inn.mroyek.movieappcleanarchitecture.abstraction.Mapper
 import inn.mroyek.movieappcleanarchitecture.data.response.MovieDetailDto
-import inn.mroyek.movieappcleanarchitecture.domain.entity.MovieDetail
+import inn.mroyek.movieappcleanarchitecture.domain.entity.moviedetail.MovieDetail
 import javax.inject.Inject
 
 class MovieDetailMapper  @Inject constructor() : Mapper<MovieDetailDto, MovieDetail>() {

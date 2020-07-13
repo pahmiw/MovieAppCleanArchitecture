@@ -5,8 +5,8 @@ import inn.mroyek.movieappcleanarchitecture.data.mapper.MovieDetailMapper
 import inn.mroyek.movieappcleanarchitecture.data.mapper.NowPlayingMapper
 import inn.mroyek.movieappcleanarchitecture.data.source.MovieRemoteDataSource
 import inn.mroyek.movieappcleanarchitecture.data.vo.Result
-import inn.mroyek.movieappcleanarchitecture.domain.entity.Movie
-import inn.mroyek.movieappcleanarchitecture.domain.entity.MovieDetail
+import inn.mroyek.movieappcleanarchitecture.domain.entity.movielist.Movie
+import inn.mroyek.movieappcleanarchitecture.domain.entity.moviedetail.MovieDetail
 import inn.mroyek.movieappcleanarchitecture.domain.repository.MovieRepository
 import javax.inject.Inject
 

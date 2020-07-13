@@ -2,7 +2,7 @@ package inn.mroyek.movieappcleanarchitecture.data.mapper
 
 import inn.mroyek.movieappcleanarchitecture.abstraction.Mapper
 import inn.mroyek.movieappcleanarchitecture.data.response.NowPlayingDto
-import inn.mroyek.movieappcleanarchitecture.domain.entity.Movie
+import inn.mroyek.movieappcleanarchitecture.domain.entity.movielist.Movie
 import javax.inject.Inject
 
 class NowPlayingMapper @Inject constructor() : Mapper<NowPlayingDto, List<Movie>>() {

@@ -1,10 +1,6 @@
 package inn.mroyek.movieappcleanarchitecture.presentation.screen.moviedetail.mapper
 
-import inn.mroyek.movieappcleanarchitecture.abstraction.Mapper
-import inn.mroyek.movieappcleanarchitecture.domain.entity.MovieDetail
-import inn.mroyek.movieappcleanarchitecture.domain.entity.MovieDetailUiModel
-import inn.mroyek.movieappcleanarchitecture.helper.extension.toLocalDate
-import javax.inject.Inject
+/*
 
 class MovieDetailPresentationMapper @Inject constructor(): Mapper<MovieDetail, MovieDetailUiModel>() {
     override fun map(input: MovieDetail): MovieDetailUiModel {
@@ -46,4 +42,4 @@ class MovieDetailPresentationMapper @Inject constructor(): Mapper<MovieDetail, M
         }
         return result
     }
-}
+}*/

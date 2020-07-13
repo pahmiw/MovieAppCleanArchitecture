@@ -4,31 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="isLoading"
             type="Boolean" />
+
         <variable
             name="movie"
-            type="inn.mroyek.movieappcleanarchitecture.domain.entity.MovieDetailUiModel" />
+            type="inn.mroyek.movieappcleanarchitecture.domain.entity.moviedetail.MovieDetailUiModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
+        android:scrollbars="vertical"
         tools:context=".presentation.screen.moviedetail.MovieDetailFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
 
             <ImageView
                 android:id="@+id/ivBackdrop"
                 loadBackdrop="@{movie.backdropPath}"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:scaleType="fitXY"
+                android:layout_height="320dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,22 +45,23 @@
                 android:layout_height="160dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:maxHeight="160dp"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:minLines="1"
                 android:text="@{movie.title}"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivBackdrop"
@@ -66,12 +72,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:text="@{movie.overview}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivPoster"
-                app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate"
+                app:layout_constraintTop_toBottomOf="@+id/genreRecyclerView"
                 tools:text="A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground fight clubs forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion." />
 
             <TextView
@@ -95,16 +101,15 @@
                 app:layout_constraintTop_toTopOf="@+id/tvReleaseDate"
                 tools:text="167min" />
 
-            <TextView
-                android:id="@+id/tvGenres"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/genreRecyclerView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@{movie.genres}"
-                app:layout_constraintBottom_toBottomOf="@+id/tvDuration"
-                app:layout_constraintStart_toEndOf="@+id/tvDuration"
-                app:layout_constraintTop_toTopOf="@+id/tvDuration"
-                tools:text="Thriller" />
+                app:layout_constraintEnd_toEndOf="@+id/tvDescription"
+                app:layout_constraintStart_toStartOf="@+id/tvDescription"
+                app:layout_constraintTop_toTopOf="@+id/ivPoster"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_genre" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -118,14 +123,144 @@
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/contentGroup"
-                android:visibility="@{isLoading ? View.GONE : View.VISIBLE}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="tvDescription,tvReleaseDate,tvGenres,tvDuration,ivBackdrop,textView,ivPoster" />
+                android:visibility="@{isLoading ? View.GONE : View.VISIBLE}"
+                app:constraint_referenced_ids="tvDuration,tvDescription,genreRecyclerView,ivPoster,textView,ivBackdrop,tvReleaseDate,imageView,textView6,divider,textView2,textView9,textView8,divider3,textView5,textView3,textView4,divider2" />
+
+            <include
+                android:id="@+id/divider"
+                layout="@layout/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
+
+            <include
+                android:id="@+id/divider2"
+                layout="@layout/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toTopOf="@+id/textView2"
+                app:srcCompat="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@{String.valueOf(movie.voteAverage)}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2"
+                tools:text="4.6" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(movie.voteCount)}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                app:layout_constraintEnd_toStartOf="@+id/textView8"
+                app:layout_constraintStart_toEndOf="@+id/textView3"
+                app:layout_constraintTop_toTopOf="@+id/textView2"
+                tools:text="3.275" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/10"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Rating"
+                app:layout_constraintEnd_toEndOf="@+id/textView3"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Voters"
+                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintStart_toStartOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{String.valueOf(movie.popularity)}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                app:layout_constraintEnd_toEndOf="@+id/textView9"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toTopOf="@+id/textView6"
+                tools:text="4.7" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Popularity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <include
+                android:id="@+id/divider3"
+                layout="@layout/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <!--<androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider3"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_cast" />-->
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 
 </layout>
