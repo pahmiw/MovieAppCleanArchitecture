@@ -8,6 +8,7 @@ import inn.mroyek.movieappcleanarchitecture.data.vo.Result
 import inn.mroyek.movieappcleanarchitecture.domain.entity.movielist.Movie
 import inn.mroyek.movieappcleanarchitecture.domain.usecase.GetNowPlayingUseCase
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
@@ -18,7 +19,7 @@ class HomeViewModel @Inject constructor(
     val nowPlaying: LiveData<Result<List<Movie>>>
         get() = _nowPlaying
 
-    fun getNowPlaying(){
+    fun getNowPlaying() = runBlocking {
         _nowPlaying.value = Result.Loading
         viewModelScope.launch {
             _nowPlaying.value = getNowPlayingUseCase()

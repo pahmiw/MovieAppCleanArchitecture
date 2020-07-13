@@ -9,6 +9,7 @@ import inn.mroyek.movieappcleanarchitecture.databinding.ItemMovieBinding
 import inn.mroyek.movieappcleanarchitecture.domain.entity.movielist.Movie
 
 
+/*
 class MovieRecyclerAdapter(private val clickListener: MovieClickListener) :
     ListAdapter<Movie, MovieRecyclerAdapter.MovieViewHolder>(diffCallback) {
 
@@ -56,3 +57,4 @@ class MovieRecyclerAdapter(private val clickListener: MovieClickListener) :
         fun onMovieClick(movie: Movie)
     }
 }
+*/
